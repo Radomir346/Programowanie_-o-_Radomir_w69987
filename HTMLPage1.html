@@ -1,31 +1,63 @@
 ﻿<!DOCTYPE html>
+
 <html lang="pl">
 <head>
-    <meta charset="utf8" />
-    <title>My website</title>
-    <link rel="stylesheet" type="text/css" href="StyleSheet1.css">
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <a href="#">Strona główna</a>
-        <a href="#">Podstrona 1</a>
-        <a href="#">Podstrona 2</a>
-        <a href="#">Podstrona 3</a>
-    </header>
-    <h1>
-        hello world
-    </h1>
-    <h4>
-        this is website
-    </h4>
-    <article>
-        <div class="article-element">Tytuł</div>
-        <div class="article-element">komentarz</div>
-    </article>
-    <ts>tekst</ts>
-    <footer>
-        Ulubione seriale: <span>12 małp, snowpierce</span> <br>
-        Ulubione książki: <span>książka 1,książka 2</span>
-    </footer>
+    <button class="button" id="button1">Przycisk 1</button>
+    <button class="button" id="button2">Przycisk 2</button>
+    <button class="button" id="button3">Przycisk 3</button>
+    <button class="button" id="toggleButton">Przycisk 4 - Pokaż/Ukryj</button>
+    <div id="elementToToggle" class="hidden">
+        Element do ukrycia/pokazania.
+    </div>
+    <input type="text" id="textInput">
+    <button id="addButton">Dodaj do listy</button>
+    <ul id="list"></ul>
+    <input type="text" id="firstNameInput" placeholder="Imię">
+    <input type="text" id="lastNameInput" placeholder="Nazwisko">
+    <button id="addButton">Dodaj do tabeli</button>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+    <input type="number" id="temperatureInput" placeholder="Wprowadź temperaturę">
+    <select id="unitSelect">
+        <option value="Celsius">Celsjusz</option>
+        <option value="Fahrenheit">Fahrenheit</option>
+    </select>
+    <button id="convertButton">Konwertuj</button>
+
+    <div id="result"></div>
+    <h2>Znajdź największy wspólny dzielnik</h2>
+
+    <label for="number1">Liczba 1:</label>
+    <input type="number" id="number1" placeholder="Wprowadź pierwszą liczbę">
+
+    <label for="number2">Liczba 2:</label>
+    <input type="number" id="number2" placeholder="Wprowadź drugą liczbę">
+
+    <button id="calculateButton">Oblicz</button>
+
+    <p id="result"></p>
+
+    <script src="Script1.js"></script>
 </body>
 </html>
