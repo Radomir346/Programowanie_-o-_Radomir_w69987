@@ -1,148 +1,254 @@
-function pausecomp(millis)
+//zad 1
+let book = {
+    author: "Chór zapomnianych g³osów",
+    title: "Remigiusz mróz",
+    year: 2014
+};
+function bookInfo(book) {
+    return `${book.title} - ${book.author} (${book.year})`;
+}
+console.log(bookInfo(book));
+//zad 2
+let student = {
+    firstName: "Jan",
+    lastName: "Kowalski",
+    albumNumber: "12345",
+    grades: {
+        math: 3,
+        physics: 4,
+        chemistry: 5
+    }
+};
+function calculateAverage(student) {
+    let sum = 0;
+    for (let subject in student.grades) {
+        sum += student.grades[subject];
+    }
+    return sum / Object.keys(student.grades).length;
+}
+console.log("Œrednia ocen studenta:", calculateAverage(student));
+//zad3
+class Triangle {
+    constructor(height, baseLength, name) {
+        this.height = height;
+        this.baseLength = baseLength;
+        this.name = name;
+    }
+    calculateArea() {
+        return 0.5 * this.baseLength * this.height;
+    }
+    static compareTriangles(triangle1, triangle2) {
+        if (triangle1.calculateArea() > triangle2.calculateArea()) {
+            return triangle1;
+        } else {
+            return triangle2;
+        }
+    }
+}
+let triangle1 = new Triangle(5, 6, "Triangle 1");
+let triangle2 = new Triangle(4, 8, "Triangle 2");
+let triangle3 = new Triangle(3, 10, "Triangle 3");
+console.log("Pole trójk¹ta 1:", triangle1.calculateArea());
+console.log("Trójk¹t z wiêkszym polem:", Triangle.compareTriangles(triangle1, triangle2).name);
+//zad4
+class Trapez
 {
-    var date = new Date();
-    var curDate = null;
-    do { curDate = new Date(); }
-    while(curDate-date < millis);
+    constructor(height, base1, base2, name) {
+        this.height = height;
+        this.base1 = base1;
+        this.base2 = base2;
+        this.name = name;
+    }
+    calculateArea() {
+        return 0.5 * (this.base1 + this.base2) * this.height;
+    }
+    changeName(newName) {
+        this.name = newName;
+    }
 }
-function silnia(number)
-{if(number<=0){return 0;}
-if(number==1){return number;}
-return number*silnia(number-1);
-}
-
-for(let i=10;i>0;i--)
-{
-//console.log(i);
-//pausecomp(1000);
-}
-//console.log("happy new year");
-let lb=parseInt(prompt("Silniê jakiej liczbyy policzyæ: "))
-if (!isNaN(lb)) {
-    console.log(silnia(lb));
-} else {
-    console.log("To nie jest liczba.");
-}
-//zad 3
-lb=prompt("Podaj wiek: ");
-if(lb<18){window.open("http://www.google.com/")}
-else
-{
-    window.open("https://www.w3schools.com");
-}
-//zad 4
-const buttons = document.querySelectorAll('.button');
-function resetButtons() {
-buttons.forEach(button => {
-button.style.backgroundColor = '';
-    });
-}
-function handleClick(event) {
-const clickedButton = event.target;
-resetButtons();
-clickedButton.style.backgroundColor = 'lightblue';
-}
-buttons.forEach(button => {
-button.addEventListener('click', handleClick);
-});
-//zad 5
-const toggleButton = document.getElementById('toggleButton');
-
-function handleToggleButtonClick() {
-    elementToToggle.classList.toggle('hidden');
-}
-
-toggleButton.addEventListener('click', handleToggleButtonClick);
-//zad 6
-const textInput = document.getElementById('textInput');
-const addButton = document.getElementById('addButton');
-const list = document.getElementById('list');
-
-function addItemToList() {
-    const inputValue = textInput.value;
-    if (inputValue.trim() !== '') {
-        const listItem = document.createElement('li');
-        listItem.textContent = inputValue;
-        list.appendChild(listItem);
-        textInput.value = '';
+let trapezoid1 = new Trapez(5, 6, 8, "Trapezoid 1");
+let trapezoid2 = new Trapez(4, 7, 9, "Trapezoid 2");
+let trapezoid3 = new Trapez(3, 8, 10, "Trapezoid 3");
+console.log("Pole trapezu 1:", trapezoid1.calculateArea());
+trapezoid1.changeName("New Trapezoid 1");
+console.log("Nowa nazwa trapezu:", trapezoid1.name);
+//zad5
+function compareShapes(triangle, trapezoid) {
+    if (triangle.calculateArea() > trapezoid.calculateArea()) {
+        console.log("Wiêksza figura:", triangle.name);
     } else {
-        alert('Pole tekstowe nie mo¿e byæ puste!');
+        console.log("Wiêksza figura:", trapezoid.name);
+    }
+}
+compareShapes(triangle1, trapezoid1);
+//zad6
+let rectangle = {
+    width: 0,
+    height: 0,
+    setDimensions: function (width, height) {
+        this.width = width;
+        this.height = height;
+    },
+    calculateArea: function () {
+        return this.width * this.height;
+    },
+    calculatePerimeter: function () {
+        return 2 * (this.width + this.height);
+    },
+    isSquare: function () {
+        return this.width === this.height;
+    }
+};
+let widthInput = document.getElementById("width");
+let heightInput = document.getElementById("height");
+let resultElement = document.getElementById("result");
+function createRectangle() {
+    let width = parseFloat(widthInput.value);
+    let height = parseFloat(heightInput.value);
+    rectangle.setDimensions(width, height);
+    resultElement.textContent = `Pole: ${rectangle.calculateArea()}, Obwód: ${rectangle.calculatePerimeter()}, Czy kwadrat: ${rectangle.isSquare()}`;
+}
+//zad7
+let car = {
+    brand: "Toyota",
+    model: "Corolla",
+    year: 2020,
+    color: "blue",
+    maxSpeed: 180,
+    currentSpeed: 0,
+    accelerate: function (value) {
+        this.currentSpeed += value;
+        if (this.currentSpeed > this.maxSpeed) {
+            this.currentSpeed = this.maxSpeed;
+        }
+    },
+    decelerate: function (value) {
+        this.currentSpeed -= value;
+        if (this.currentSpeed < 0) {
+            this.currentSpeed = 0;
+        }
+    },
+    getCarInfo: function () {
+        return `${this.brand} ${this.model} (${this.year}), Kolor: ${this.color}, Prêdkoœæ: ${this.currentSpeed}`;
+    },
+    getAge: function () {
+        let currentYear = new Date().getFullYear();
+        return currentYear - this.year;
+    }
+};
+car.accelerate(50);
+car.decelerate(20);
+console.log(car.getCarInfo());
+console.log("Wiek samochodu:", car.getAge());
+//zad8
+class BankAccount {
+    constructor(balance) {
+        this.balance = balance;
+    }
+
+    deposit(amount) {
+        this.balance += amount;
+    }
+
+    withdraw(amount) {
+        if (amount <= this.balance) {
+            this.balance -= amount;
+        } else {
+            console.log("Brak wystarczaj¹cych œrodków na koncie.");
+        }
+    }
+
+    getBalance() {
+        return this.balance;
+    }
+}
+let account = new BankAccount(1000);
+account.deposit(500);
+account.withdraw(200);
+console.log("Stan konta:", account.getBalance());
+//zad9
+class Pracownik {
+    constructor(imie, nazwisko, pensja) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.pensja = pensja;
+    }
+}
+class ZarzadzaniePracownikami {
+    constructor() {
+        this.listaPracownikow = [];
+    }
+
+    dodajPracownika(pracownik) {
+        this.listaPracownikow.push(pracownik);
+    }
+
+    usunPracownika(imie, nazwisko) {
+        this.listaPracownikow = this.listaPracownikow.filter(pracownik => !(pracownik.imie === imie && pracownik.nazwisko === nazwisko));
+    }
+
+    pobierzPracownika(imie, nazwisko) {
+        return this.listaPracownikow.find(pracownik => pracownik.imie === imie && pracownik.nazwisko === nazwisko);
+    }
+
+    zapiszDoJSON() {
+        let jsonData = JSON.stringify(this.listaPracownikow);
+    }
+
+    wczytajZJSON(jsonData) {
+        this.listaPracownikow = JSON.parse(jsonData);
+    }
+}
+let zarzadzaniePracownikami = new ZarzadzaniePracownikami();
+let pracownik1 = new Pracownik("Jan", "Kowalski", 3000);
+let pracownik2 = new Pracownik("Anna", "Nowak", 3500);
+zarzadzaniePracownikami.dodajPracownika(pracownik1);
+zarzadzaniePracownikami.dodajPracownika(pracownik2);
+zarzadzaniePracownikami.usunPracownika("Jan", "Kowalski");
+console.log(zarzadzaniePracownikami.listaPracownikow);
+//zad10
+class Produkt {
+    constructor(nazwa, cena, dostepneSztuki) {
+        this.nazwa = nazwa;
+        this.cena = cena;
+        this.dostepneSztuki = dostepneSztuki;
     }
 }
 
-addButton.addEventListener('click', addItemToList);
-//zad 7
-const lastNameInput = document.getElementById('lastNameInput');
-const tableBody = document.getElementById('tableBody');
+class ZarzadzanieProduktami {
+    constructor() {
+        this.listaProduktow = [];
+    }
 
-function addItemToTable() {
-    const firstNameValue = firstNameInput.value.trim();
-    const lastNameValue = lastNameInput.value.trim();
+    dodajProdukt(produkt) {
+        this.listaProduktow.push(produkt);
+    }
 
-    if (firstNameValue !== '' && lastNameValue !== '') {
-        const newRow = document.createElement('tr');
-        const firstNameCell = document.createElement('td');
-        const lastNameCell = document.createElement('td');
+    usunProdukt(nazwa) {
+        this.listaProduktow = this.listaProduktow.filter(produkt => produkt.nazwa !== nazwa);
+    }
 
-        firstNameCell.textContent = firstNameValue;
-        lastNameCell.textContent = lastNameValue;
+    zmienCene(nazwa, nowaCena) {
+        let produkt = this.listaProduktow.find(produkt => produkt.nazwa === nazwa);
+        if (produkt) {
+            produkt.cena = nowaCena;
+        } else {
+            console.log("Produkt o podanej nazwie nie zosta³ znaleziony.");
+        }
+    }
 
-        newRow.appendChild(firstNameCell);
-        newRow.appendChild(lastNameCell);
+    zapiszDoJSON() {
+        let jsonData = JSON.stringify(this.listaProduktow);
+    }
 
-        tableBody.appendChild(newRow);
-
-        firstNameInput.value = '';
-        lastNameInput.value = '';
-    } else {
-        alert('Wype³nij oba pola!');
+    wczytajZJSON(jsonData) {
+        this.listaProduktow = JSON.parse(jsonData);
     }
 }
-addButton.addEventListener('click', addItemToTable);
-//zad 8
-const temperatureInput = document.getElementById('temperatureInput');
-const unitSelect = document.getElementById('unitSelect');
-const convertButton = document.getElementById('convertButton');
-const resultDiv = document.getElementById('result');
-
-function convertTemperature() {
-    const temperature = parseFloat(temperatureInput.value);
-    const unit = unitSelect.value;
-    let result;
-
-    if (unit === 'Celsius') {
-        result = (temperature * 9 / 5) + 32;
-        resultDiv.textContent = `${temperature} stopni Celsjusza to ${result} stopni Fahrenheit.`;
-    } else if (unit === 'Fahrenheit') {
-        result = (temperature - 32) * 5 / 9;
-        resultDiv.textContent = `${temperature} stopni Fahrenheit to ${result} stopni Celsjusza.`;
-    }
-}
-
-convertButton.addEventListener('click', convertTemperature);
-//zad 9
-const number1Input = document.getElementById('number1');
-const number2Input = document.getElementById('number2');
-const calculateButton = document.getElementById('calculateButton');
-const resultParagraph = document.getElementById('result');
-
-function calculateGCD(a, b) {
-    while (b !== 0) {
-        let temp = b;
-        b = a % b;
-        a = temp;
-    }
-    return a;
-}
-
-calculateButton.addEventListener('click', function () {
-    const number1 = parseInt(number1Input.value);
-    const number2 = parseInt(number2Input.value);
-
-    if (!isNaN(number1) && !isNaN(number2)) {
-        const gcd = calculateGCD(Math.abs(number1), Math.abs(number2));
-        resultParagraph.textContent = `Najwiêkszy wspólny dzielnik liczb ${number1} i ${number2} wynosi ${gcd}.`;
-    } else {
-        resultParagraph.textContent = 'Proszê wprowadziæ obie liczby ca³kowite.';
-    }
-});
+let zarzadzanieProduktami = new ZarzadzanieProduktami();
+let produkt1 = new Produkt("Laptop", 2500, 10);
+let produkt2 = new Produkt("Smartfon", 1500, 20);
+zarzadzanieProduktami.dodajProdukt(produkt1);
+zarzadzanieProduktami.dodajProdukt(produkt2);
+zarzadzanieProduktami.usunProdukt("Smartfon");
+console.log(zarzadzanieProduktami.listaProduktow);
