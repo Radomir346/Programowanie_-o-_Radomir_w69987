@@ -1,0 +1,45 @@
+﻿body {
+    box-sizing: border-box;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 10px 2px #aaa;
+    padding: 20px;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+article, section {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 20px;
+}
+
+article {
+    position: relative;
+}
+
+article-element {
+    width: 50%;
+}
+
+footer {
+    text-align: center;
+}
+.article-element {
+    display: inline-block;
+    width: 50%;
+}
