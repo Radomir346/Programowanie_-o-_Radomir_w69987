@@ -1,0 +1,52 @@
+﻿body {
+    font-family: Arial, sans-serif;
+}
+
+#main-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#aside {
+    float: right;
+    width: 20%;
+}
+
+#article {
+    padding: 20px;
+}
+
+#footer {
+    clear: both;
+    padding: 10px;
+}
+form {
+    padding: 20px;
+}
+
+label {
+    display: block;
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+}
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+th {
+    background-color: #f0f0f0;
+}
