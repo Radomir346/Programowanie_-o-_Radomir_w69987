@@ -1,73 +1,52 @@
 ﻿body {
-    padding: 0;
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    box-sizing: border-box;
-    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
 }
 
-header {
-    position: fixed;
-    width: 100%;
-    background-color: lightgray;
-    margin-top: 0;
-    margin-left: 0;
-    box-shadow: 0 0 10px 2px #aaa;
-    padding: 20px 120px;
-    z-index: 100;
+#main-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-h1 {
-    font-size: 50px;
+#aside {
+    float: right;
+    width: 20%;
 }
 
-h4 {
-    font-size: 30px;
+#article {
+    padding: 20px;
 }
 
-ts {
-    display: inline-flex;
+#footer {
+    clear: both;
+    padding: 10px;
+}
+form {
+    padding: 20px;
 }
 
-div {
-    display: flex;
-    flex-direction: column;
-}
-
-header a {
-    text-decoration: none;
-    color: black;
-    margin-right: 20px;
-    padding: 5px 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-    header a:first-child {
-        font-weight: bold;
-        color: blue;
-    }
-
-article {
-    position: relative;
+label {
     display: block;
-    padding: 150px 120px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    margin: 0;
-    font-size: 20px;
 }
 
-.article-element {
-    width: 50%;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
+input[type="text"], input[type="email"] {
     width: 100%;
-    background-color: lightgray;
-    padding: 20px 120px;
-    text-align: center;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+}
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+th {
+    background-color: #f0f0f0;
 }
